@@ -9,7 +9,8 @@ class App extends Component {
 
     this.state = {
       //* State turns into props when it gets passed down (e.g. CardList)
-      monsters: []
+      monsters: [],
+      searchField: ""
     };
   }
 
@@ -24,6 +25,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <input
+          type="search"
+          placeholder="search monsters"
+          onChange={e => {
+            this.setState({ search: e.target.value });
+          }}
+        />
         <CardList monsters={this.state.monsters} />
       </div>
     );
