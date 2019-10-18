@@ -8,6 +8,7 @@ class App extends Component {
     super(); //* This calls the constructor method on the component class and gives access to this.state
 
     this.state = {
+      //* State turns into props when it gets passed down (e.g. CardList)
       monsters: []
     };
   }
