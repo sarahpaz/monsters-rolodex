@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { CardList } from "./components/card-list/card-list.component";
+import { SearchBox } from "./components/search-box/search-box.component";
 
 //* Class component gives access to State
 class App extends Component {
@@ -24,7 +25,6 @@ class App extends Component {
   //* As soon as state changes we re-render the new component with the new state and display it
   render() {
     const { monsters, searchField } = this.state;
-
     const filteredMonsters = monsters.filter(
       monster =>
         monster.name.toLowerCase().includes(searchField.toLowerCase()) ||
@@ -33,10 +33,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <input
-          type="search"
+        <SearchBox
           placeholder="search monsters"
-          onChange={e => this.setState({ searchField: e.target.value })}
+          handleChange={e => this.setState({ searchField: e.target.value })}
         />
         <CardList monsters={filteredMonsters} />
       </div>
