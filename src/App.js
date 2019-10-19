@@ -22,6 +22,11 @@ class App extends Component {
       .then(users => this.setState({ monsters: users })); //* Everytime you call setState it re-renders
   }
 
+  //* Write class methods with arrow functions so .this has lexical scope to the class
+  handleChange = e => {
+    this.setState({ searchField: e.target.value });
+  };
+
   //* As soon as state changes we re-render the new component with the new state and display it
   render() {
     const { monsters, searchField } = this.state;
@@ -35,7 +40,7 @@ class App extends Component {
       <div className="App">
         <SearchBox
           placeholder="search monsters"
-          handleChange={e => this.setState({ searchField: e.target.value })}
+          handleChange={this.handleChange}
         />
         <CardList monsters={filteredMonsters} />
       </div>
